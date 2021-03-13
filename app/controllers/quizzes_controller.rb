@@ -1,10 +1,8 @@
 class QuizzesController < ApplicationController
   before_action :require_logged_in
+  before_action :owns_quiz, except: [:index, :new, :create]
 
   def index
-    #shows all quizzes current user has created - has link to make new quiz
-    # raise current_user.quizzes.inspect
-
     #find all quizzes that belong to user of current session
     @quizzes = current_user.quizzes
   end
@@ -13,8 +11,6 @@ class QuizzesController < ApplicationController
     #shows individual quiz and links to let edit and delete
     #how to belong to user
     @quiz = Quiz.find(params[:id])
-
-    redirect_to '/home' unless @quiz.host == current_user
   end
 
   def new
@@ -30,9 +26,28 @@ class QuizzesController < ApplicationController
     end
   end
 
+  def edit
+    @quiz = Quiz.find(params[:id])
+  end
+
+  def update
+    @quiz = Quiz.find(params[:id])
+    @quiz.title = quiz_params[:title]
+    if @quiz.save
+      redirect_to quiz_path(@quiz)
+    else
+      redirect_to edit_quiz_path(@quiz)
+    end
+  end
+
   private
 
   def quiz_params
     params.require(:quiz).permit(:title, :host_id)
   end 
+
+  def owns_quiz
+    @quiz = Quiz.find(params[:id])
+    redirect_to '/home' unless @quiz.host == current_user
+  end
 end
