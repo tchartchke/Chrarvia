@@ -5,6 +5,11 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback' => 'sessions#create'
 
-  resources :users, only: [:index, :new, :show]
+  resources :users, only: [:index, :new, :show] do
+    resources :quizzes, only: [:index, :new, :create, :show]
+  end
+
   get '/home' => 'users#home'
+  get '/signin' => 'users#new'
+
 end

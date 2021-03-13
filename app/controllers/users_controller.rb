@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
   def home
     if session[:user_id]
+      @user = User.find(session[:user_id])
       render :home
     else
       redirect_to new_user_path
