@@ -3,12 +3,13 @@ Rails.application.routes.draw do
   
   # TODO: set root
   root :to => 'application#welcome'
-  
+
   get '/auth/:provider/callback' => 'sessions#create'
 
-  resources :users, only: [:index, :new, :show] do
-    resources :quizzes, only: [:index, :new, :create, :show]
-  end
+  resources :users, only: [:index, :new, :show]
+  
+  resources :quizzes, only: [:index, :new, :create, :show]
+  
 
   get '/home' => 'users#home'
   get '/signin' => 'users#new'

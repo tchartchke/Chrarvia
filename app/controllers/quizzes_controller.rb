@@ -18,19 +18,18 @@ class QuizzesController < ApplicationController
   end
 
   def new
-    @user = current_user
-    @quiz = Quiz.new(host_id:@user.id)
+    @quiz = Quiz.new(host_id: current_user.id)
   end
 
   def create
     @quiz = Quiz.new(quiz_params)
     if @quiz.save
-      redirect_to user_quiz_path(current_user, @quiz)
+      redirect_to quiz_path(@quiz)
     else
-      redirect_to new_user_quiz_path(current_user)
+      redirect_to new_quiz_path
     end
   end
-  
+
   private
 
   def quiz_params
