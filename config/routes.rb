@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#create'
 
   resources :users, only: [:index, :new, :show]
-  
-  resources :quizzes, only: [:index, :new, :create, :show]
+
+  resources :quizzes, only: [:index, :new, :create, :show, :edit, :update]
   
 
   get '/home' => 'users#home'
