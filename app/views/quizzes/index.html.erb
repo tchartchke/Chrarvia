@@ -1,1 +1,8 @@
-Need to be logged in to see this
+<p>Need to be logged in to see this </p>
+<p>These are all my quizzes. I made them. I can play with them</p>
+
+<% @quizzes.each do |quiz| %>
+<li>
+  <%= link_to quiz.title, user_quiz_path(quiz.host.id, quiz.id) %> - (<%= quiz.rounds.count %> rounds, <%= quiz.questions.count %> questions total)
+</li>
+<% end %>

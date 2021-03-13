@@ -1,2 +1,11 @@
-<h1>Quizzes#show</h1>
-<p>Find me in app/views/quizzes/show.html.erb</p>
+<h1><%= @quiz.title  %></h1>
+<% @quiz.rounds.each do |round| %>
+  <p>
+    <%= round.subject %>
+    <% round.questions.each do |question| %>
+    <li>
+      <%= question.question %>: <%= question.answer.answer %> (<%= question.answer.score %>)
+    </li>
+    <% end %>
+  </p>
+<% end %>
