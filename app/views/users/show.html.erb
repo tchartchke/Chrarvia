@@ -1,6 +1,6 @@
 <%= @user.name %>'s Info
 <% @user.quizzes.each do |quiz| %>
 <p>
-  <%= quiz.title %>
+  <%= quiz.title %> - (<%= quiz.rounds.count %> rounds)
 </p>
 <% end %>
