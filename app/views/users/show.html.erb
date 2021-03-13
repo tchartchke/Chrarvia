@@ -1,1 +1,6 @@
 <%= @user.name %>'s Info
+<% @user.quizzes.each do |quiz| %>
+<p>
+  <%= quiz.title %>
+</p>
+<% end %>
