@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
+  def index
+    @users = User.all
+  end
+
   def new
     if session[:user_id]
-      redirect_to 'home'
+      redirect_to home_path
+    else
+      render :new
     end
   end
 
@@ -10,6 +16,10 @@ class UsersController < ApplicationController
   end
 
   def home
-
+    if session[:user_id]
+      render :home
+    else
+      redirect_to new_user_path
+    end
   end
 end
