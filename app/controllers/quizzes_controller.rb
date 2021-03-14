@@ -48,6 +48,7 @@ class QuizzesController < ApplicationController
 
   def owns_quiz
     @quiz = Quiz.find(params[:id])
+    #throws some kind of error that says "you don't own thaat quiz which is why you ended up back here"
     redirect_to '/home' unless @quiz.host == current_user
   end
 end

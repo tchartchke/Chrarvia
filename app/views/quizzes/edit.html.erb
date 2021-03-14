@@ -6,3 +6,11 @@
 
   <%= f.submit %>
 <% end %>
+<p>
+  <%= link_to 'Add round to quiz', new_round_path(:quiz_id => @quiz.id) %>
+</p>
+<% @quiz.rounds.each do |round| %>
+<li>
+  <%= link_to round.subject, edit_round_path(round) %> (<%= round.questions.count %> questions)
+</li>
+<% end %>

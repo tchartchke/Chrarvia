@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :new, :show]
 
-  resources :quizzes, only: [:index, :new, :create, :show, :edit, :update]
+  resources :quizzes, only: [:index, :new, :create, :show, :edit, :update] 
+  
+  resources :rounds, only: [:new, :create, :edit, :update]
   
 
   get '/home' => 'users#home'
