@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_13_155056) do
-
-  create_table "answers", force: :cascade do |t|
-    t.integer "question_id"
-    t.string "answer"
-    t.integer "score"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+ActiveRecord::Schema.define(version: 2021_03_14_022148) do
 
   create_table "questions", force: :cascade do |t|
     t.integer "round_id"
@@ -26,6 +18,8 @@ ActiveRecord::Schema.define(version: 2021_03_13_155056) do
     t.text "question"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "answer"
+    t.integer "points"
   end
 
   create_table "quizzes", force: :cascade do |t|

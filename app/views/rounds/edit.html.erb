@@ -1,0 +1,22 @@
+<%= form_for @round do |f| %>
+  <%= f.label :subject %>
+  <%= f.text_field :subject %>
+
+  <%= f.hidden_field :quiz_id %>
+
+  <%= f.fields_for :questions do |question| %>
+  <p>
+    <%= question.label :question %>
+    <%= question.text_field :question %><br>
+
+    <%= question.label :answer %>
+    <%= question.text_field :answer %><br>
+
+    <%= question.label :points %>
+    <%= question.text_field :points %><br>
+  </p>
+  <% end %>
+
+  <br>
+  <%= f.submit %>
+<% end %>
